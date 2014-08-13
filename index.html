@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档定义，说明这是一个HTML5文档。
+-->
+<!--
+这是一个关于HTML5的学习笔记和示例文档
+-->
+<html lang="zh">
+    <head>
+	<!-- 元数据、外部资源、外部CSS及CSS、外部脚本及脚本在此处定义 -->
+	<title>HTML5权威指南 [美]Adam Freeman</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 下面用style元素来定义一个样式表-->
+	<style type="text/css">
+	    a
+	    {
+		background-color: grey;
+		color: white;
+	    }
+	    span
+	    {
+		border: thin black solid;
+	    }
+	</style>
+	<!-- 下面是链入一个外部CSS文档 -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript">
+	    var toggleHidden = function()
+	    {
+		var elem = document.getElementById("toggle");
+		if(elem.hasAttribute("hidden"))
+		    elem.removeAttribute("hidden");
+		else
+		    elem.setAttribute("hidden", "hidden");
+	    }
+	</script>
+    </head>
+    <body>
+	<section><image src="./images/cover.jpg" /></section>
+	<h1>第一部分 开篇</h1>
+	<article>
+	    <header>第一章 HTML5背景知识</header>
+	    <section>
+		<p>HTML5假定使用JavaScript,而且HTML5很多新增特性都要用到JavaScript。HTML5的一大改进是让浏览器直接处理那些原来要使用Flash实现的富内容。</p>
+		<p>HTML5的三项核心技术是HTML5核心规范，CSS和JavaScript。</p>
+		<ul>
+		    <li>核心规范用于定义标记内容并明确其含义</li>
+		    <li>CSS用于控制标记过的内容呈现</li>
+		    <li>JavaScript用来操纵文档的内容以及响应用户的操作。还有一些HTML5的新增内容，也需要用JavaScript（指的是canvas)。</li>
+		</ul>
+		<p>HTML5引入了原生多媒体支持，引入了可编程内容，引入了语义Web。由于浏览器对HTML5的支持参差不齐，可能过<a href="http://caniuse.com">http://caniuse.com</a>来查看浏览器的支持情况。</p>
+		<p>关于HTML5的参考资料可以查询<a href="http://w3c.org">http://w3c.org</a>，以及中文站点<a href="http://www.w3school.com.cn/">http://www.w3school.com.cn/</a>。
+	    </section>
+	</article>
+	<em>*注：hr标记用来表示主题的改变。它属于虚元素，即里面不放置任何内容，只表示一种特定意思。</em>
+	<hr />
+	<article>
+	    <header>第二章 准备工作</header>
+	    <section>
+		<p>一些章节使用了Node.js可以从<a href="http://nodejs.org">http://nodejs.org</a>下载，有些功能需要使用multipart模块，从<a href="https://github.com/isaacs/multipart-js">此处下载</a>。
+	    </section>
+	</article>
+	<hr />
+	<article>
+	    <header>第三章 初探HTML</header>
+	    <section>
+		<p>HTML的元素名和属性不区分大小写，但是一般都采用小写。用标记来控制内容呈现形式的做法现在已受到强烈反对，这个工作应当由CSS完成。</p>
+		<p>有些元素具有布尔属性，这类属性不需赋值，只需将属性名添加进去即可，比如：disabled。也可以用以下两种等价方式：disabled="",disabled="disabled"。</p>
+		<p>还可以使用用户自定义属性，这类属性名由“data-”开头，以免将来出现冲突。</p>
+		<p>元素分为三大类：元数据元素（metadata element)-构建文档基本结构，流元素(flow element)-确定元素合法的父元素和子元素范围，短语元素(phrasing element)-同上，是流元素的子集。有些元素无法归入上面三类，比如li元素，作为不同元素的子元素时，表示不同的含义。</p>
+		<p>常用的HTML实体引用：&lt; &gt; &amp &euro; &pound; &sect; &copy; &reg; &trade;</p>
+		<p>全局属性：用来配置所有元素共有的行为，可以用在任何元素上，不过不一定会带来有意义或有用的行为改为。</p>
+		<ul>
+		    <li>accesskey：设定快捷键，通过alt+字母访问，但有些浏览器不支持。见下面的form示例中的name和password，设置快捷键分别为n和p。</li>
+		    <li class="otherclass">class：用来为元素归类，常用于CSS或方便找到文档中的某一类元素(比如本行用JavaScript来修改外观）。一个元素可以归入多个类别，只需用空格分隔即可。注意，这类直接执行的脚本需要在元素后面定义。</li>
+		    <li contenteditable="true">contenteditable：HTML5新增属性，让用户能修改元素内容，比如这一行就可以修改。</li>
+		    <li>contextmenu：为元素设置右键菜单，当前还没有浏览器支持。</li>
+		    <li dir="rtl">dir：用于定义文字显示方向。其值有两个ltr和rtl分别表示从左向右和从右向左。比如这一行，定义为从右向左。其实看起来不是那么回事，好在这个也不会有什么用。</li>
+		    <li>draggable：HTML5新增，用于支持拖放操作的方式之一，表示元素是否可被拖放。</li>
+		    <li>dropzone：HTML5新增，用于支持拖放操作的方式之一，与draggable搭配使用。</li>
+			<li><span id="toggle">hidden：这是个布尔属性，用于隐藏元素。点击后面的toggle按钮，将使本行主字隐现。</span><em>布尔属性的赋值好象有变动，必须给出明确的值而不能以单个属性名表示。</em><button onclick="toggleHidden()">Toggle</button></li>
+		    <li>id：给元素分配一个唯一标识符，用于将样式应用到元素上或在JavaScript中选择元素（见toggle示例），还可用于在文档中导航。在CSS中或导航中引用id，只需前面加“#”即可。</li>
+		    <li>lang：用于说明元素内容使用的语言。它的值必须为有效的ISO语言代码，具体参照http://tools.ietf.org/html/bcp47。还可用于选 择指定语言的内容，只显示用户所选语言的内容或对其应用样式。</li>
+		    <li>spellcheck：用来表明浏览器是否对元素内容进行拼写检查。，只在用户可编辑的元素上才有意义。它的值有两个true/false。检查方式取决于浏览器和用户操作系统和浏览器的语言设置。</li>
+		    <li style="background: grey; color: blue;">style：用于直接在元素上定义CSS样式，比如这一行。这种方式应尽量减少使用。</li>
+		    <li>tableindex：定义Tab键在各个可得到焦点的元素间的切换顺序。-1为不会被Tab键选中。</li>
+		    <li title="这是一个气泡提示信息">title：用于定义气泡提示信息。</li>
+		</ul>
+		<script type="text/javascript">
+		    var elems = document.getElementsByClassName("otherclass")
+		    for(i = 0; i < elems.length; i++)
+		    {
+			var x = elems[i];
+			x.style.border = "thin solid blue";
+			x.style.backgroundColor = "yellow";
+			x.style.color = "black";
+		    }
+		</script>
+		<form>
+		    Name:<input type="text" name="name" accesskey="n" title="快捷键为Alt+n" />
+		    Password:<input type="password" name="password" accesskey="p" title="快捷键为Alt+p" />
+		    <input type="submit" value="Login" accesskey="s" title="快捷键为Alt+s" />
+		</form>
+	    </section>
+	</article>
+	<hr />
+	<article>
+	    <header>第四章 初探CSS</header>
+	    <section>
+		<p>在一个样式表文件中导入其它样式表用@import "路径"; 后面要加分号，并且必须位于样式表顶端。在HTML文件中链入样式表，在head声明中使用link rel="stylesheet" type="text/css" href="样式表路径"。</p>
+		<p>在CSS文件中，能出现在@import语句之前的只有@charset语句，它用来声明字符编码，如：@charset "utf-8";。如果CSS没有声明编码，将采用HTML中定义的编码，如果HTML也未定义，默认使用utf-8。</p>
+		<p>浏览器有自己的一套样式表，用于呈现外观。最终的样式是由多个CSS来源层叠后的结果，由高到低其顺序如下：</p>
+		<ol>
+		    <li>元素内嵌样式：在元素中使用style属性定义的样式</li>
+		    <li>文档内嵌样式：在HTML文档中用style元素定义的样式</li>
+		    <li>外部样式：由link元素导入的样式</li>
+		    <li>用户样式：用户为浏览器定义的样式</li>
+		    <li>浏览器样式：浏览器的默认样式</li>
+		</ol>
+		<p>虽然这样，可以在不希望被覆盖的样式定义结束的分号之前加入“!important”来改变层叠顺序。比如：不希望颜色被改，可以这样定义：color:black !import;。能覆盖这种样式的只有用户样式表中定义为important的属性值。</p>
+		<p>如果一个元素有多个class属性用于CSS定义，且CSS对这些类中有重复的不同定义，那么，后面的优先级要高于前面的。</p>
+		<p style="border: solid blue">如果浏览器在直接相关的样式中找不到某个属性的值，就会求助于继承机制，使用父元素中的定义。并不是所有CSS属性都可以继承，一般来说，与元素外观（文字颜色、字体等）相关的样式会被继承，与布局相关的不会被继承。在子样式中使用inherit这个特别的属性值可以强㓡子元素继承父元素的属性，<span style="border: inherit">比如这里就继承了父元素的边框。</span>。</p>
+		<p>CSS中的颜色最简单的就是用颜色名称直接定义，www.w3.org/TR/css3-color有颜色值定义的完整列表。</p>
+		<p>CSS支持五种绝对长度单位：in（英寸）/cm/mm/pt（磅，1/72英寸）/pc（12磅），如果要提供打印的话，应当使用绝对长度单位。网页一般选择相对长度单位：em（与元素字号的比例）/ex（字母X的高度）/rem（与根元素-html字号的比例）/px（像素，假定分辨率为96dpi，即1像素为1英寸的96分之一）/%。</p>
+		<p>其实使用em定义更为灵活,如果要修改样式时只要修改字号即可。</p>
+	    </section>
+	</article>
+	<hr />
+	<article>
+	    <header>第五章 初探JavaScript</header>
+	    <section>
+		<p>在HTML中定义JavaScript脚本有两种方式，使用内嵌脚或定义外部脚本。JavsScript语言区分大小写，是一种弱数据类型语言，不需要定义数据类型，调用函数时，参数的数目也不必相同，参数少，未提供值的参数值均为undefined。</p>
+		<p>定义变量要使用var关键字，在script元素中定义的称为全局变量，在函数中定义的是局部变量。JavaScript有三种基本变量类型，string,number,boolean。这三种类型可用于任何变量。</p>
+		<p>JavaScript支持面向对象的概念，可以像下面这样创建一个对象：</p>
+		<pre>
+		    var myData = new Object();
+		    myData.name = "Adam";
+		    myData.age = "28";
+		</pre>
+		<p>变量属性在使用前不需要先定义，这样赋值将会直接创建一个属性，并为其赋值。如果属性已经存在，则会修改属性值。也可以用类似定义数组的语法来定义对象：</p>
+		<pre>
+		    var mydata = {
+			name: "Adam";
+			age: "28"};
+		</pre>
+		<p>对象可以添加属性，也可以添加函数。也可数组操作的方式来调用对象变量或修改其值，比如mydata["name"]="John"。这样做的好处是，可用变量来引用数组，比如有变量propName="name"; mydata[propName]="John"和前面的效果是一样的。用上面的方式添加方法如下：</p>
+		<pre>
+		    var mydata = {
+			name: "Adam";
+			age: "28";
+			displayAge: function()
+			{
+			    document.writeln("Hello" + this.name + ".");
+			}
+			myData.displayAge();	//这样来调用方法
+		</pre>
+		<p>使用for...in语句可枚举对象属性，这个语句会对对象的每个属性执行一次。：</p>
+		<pre>
+			var mydata = {
+			name: "Adam";
+			age: "28"};
+			for(var prop in mydata)
+			{
+				document.writeln("Name:" + prop + " Value:" + mydata[prop];
+			}
+		</pre>
+		<p>要删除对象的属性或方法，使用delete，比如：delete mydata.name;。in表达式用来检查，对象是否包含某个属性：var hasName = "name" in mydata;，这个表达式将返回true。</p>
+		<p>判断对象是否具有某个属性，使用in，格式："属性名" in 对象变量名。运算符==判断两个变量是否相等时，先将变量转换为相同类型再比较。而等同运算符===则不会转换类型。</p>
+		<p>基本数据类型的比较是值的比较，对象的比较则是引用比较。可以这样理解类名不同，即使两个类内容完全一样，也是不相同的两个对象。</p>
+		<p>字符串的+运算符比数字的加运算符优先级更高，而JavaScript在运算之前会进行类型转换，因此，5+'5'的结果是55而不是10。数字字面量要调用number类型的方法需在用括号括起来，将字面量转换为一个number类型的值，比如：(5).toString，也可以使用String函数，比如：String(5)。</p>
+		<p>number类型的toString方法有多种，比如，toFixed(n)可以定义小数位数。toString(2)表示转换为2进制，toString（16）自然是16进制。</p>
+		<p>将字符串转换为数值，可使用Number/parseInt/parseFloat函数。</p>
+		<p>要创建数组，可使用Array()类：var myArray = new Array();或是直接用字面量给数组赋值：var myArray = [100, 'Adam', true];</p>
+		<p>上例中可用myArray.length来获取这上数组的长度，这样就可以用for循环遍历数组了。</p>
+	    </section>
+	</article>
+    </body>
+</html>
