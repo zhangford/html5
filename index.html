@@ -130,52 +130,59 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
 	<article>
 	    <header>第五章 初探JavaScript</header>
 	    <section>
-		<p>在HTML中定义JavaScript脚本有两种方式，使用内嵌脚或定义外部脚本。JavsScript语言区分大小写，是一种弱数据类型语言，不需要定义数据类型，调用函数时，参数的数目也不必相同，参数少，未提供值的参数值均为undefined。</p>
-		<p>定义变量要使用var关键字，在script元素中定义的称为全局变量，在函数中定义的是局部变量。JavaScript有三种基本变量类型，string,number,boolean。这三种类型可用于任何变量。</p>
-		<p>JavaScript支持面向对象的概念，可以像下面这样创建一个对象：</p>
-		<pre>
-		    var myData = new Object();
-		    myData.name = "Adam";
-		    myData.age = "28";
-		</pre>
-		<p>变量属性在使用前不需要先定义，这样赋值将会直接创建一个属性，并为其赋值。如果属性已经存在，则会修改属性值。也可以用类似定义数组的语法来定义对象：</p>
-		<pre>
-		    var mydata = {
-			name: "Adam";
-			age: "28"};
-		</pre>
-		<p>对象可以添加属性，也可以添加函数。也可数组操作的方式来调用对象变量或修改其值，比如mydata["name"]="John"。这样做的好处是，可用变量来引用数组，比如有变量propName="name"; mydata[propName]="John"和前面的效果是一样的。用上面的方式添加方法如下：</p>
-		<pre>
-		    var mydata = {
-			name: "Adam";
-			age: "28";
-			displayAge: function()
-			{
-			    document.writeln("Hello" + this.name + ".");
-			}
-			myData.displayAge();	//这样来调用方法
-		</pre>
-		<p>使用for...in语句可枚举对象属性，这个语句会对对象的每个属性执行一次。：</p>
-		<pre>
-			var mydata = {
-			name: "Adam";
-			age: "28"};
-			for(var prop in mydata)
-			{
-				document.writeln("Name:" + prop + " Value:" + mydata[prop];
-			}
-		</pre>
-		<p>要删除对象的属性或方法，使用delete，比如：delete mydata.name;。in表达式用来检查，对象是否包含某个属性：var hasName = "name" in mydata;，这个表达式将返回true。</p>
-		<p>判断对象是否具有某个属性，使用in，格式："属性名" in 对象变量名。运算符==判断两个变量是否相等时，先将变量转换为相同类型再比较。而等同运算符===则不会转换类型。</p>
-		<p>基本数据类型的比较是值的比较，对象的比较则是引用比较。可以这样理解类名不同，即使两个类内容完全一样，也是不相同的两个对象。</p>
-		<p>字符串的+运算符比数字的加运算符优先级更高，而JavaScript在运算之前会进行类型转换，因此，5+'5'的结果是55而不是10。数字字面量要调用number类型的方法需在用括号括起来，将字面量转换为一个number类型的值，比如：(5).toString，也可以使用String函数，比如：String(5)。</p>
-		<p>number类型的toString方法有多种，比如，toFixed(n)可以定义小数位数。toString(2)表示转换为2进制，toString（16）自然是16进制。</p>
-		<p>将字符串转换为数值，可使用Number/parseInt/parseFloat函数。</p>
-		<p>要创建数组，可使用Array()类：var myArray = new Array();或是直接用字面量给数组赋值：var myArray = [100, 'Adam', true];</p>
-		<p>上例中可用myArray.length来获取这上数组的长度，这样就可以用for循环遍历数组了。</p>
-		<p>使用内置的数组方法</p>
-		<p>测试</p>
+			<p>在HTML中定义JavaScript脚本有两种方式，使用内嵌脚或定义外部脚本。JavsScript语言区分大小写，是一种弱数据类型语言，不需要定义数据类型，调用函数时，参数的数目也不必相同，参数少，未提供值的参数值均为undefined。</p>
+			<p>定义变量要使用var关键字，在script元素中定义的称为全局变量，在函数中定义的是局部变量。JavaScript有三种基本变量类型，string,number,boolean。这三种类型可用于任何变量。</p>
+			<p>JavaScript支持面向对象的概念，可以像下面这样创建一个对象：</p>
+			<pre>
+				var myData = new Object();
+				myData.name = "Adam";
+				myData.age = "28";
+			</pre>
+			<p>变量属性在使用前不需要先定义，这样赋值将会直接创建一个属性，并为其赋值。如果属性已经存在，则会修改属性值。也可以用类似定义数组的语法来定义对象：</p>
+			<pre>
+				var mydata = {
+				name: "Adam";
+				age: "28"};
+			</pre>
+			<p>对象可以添加属性，也可以添加函数。也可数组操作的方式来调用对象变量或修改其值，比如mydata["name"]="John"。这样做的好处是，可用变量来引用数组，比如有变量propName="name"; mydata[propName]="John"和前面的效果是一样的。用上面的方式添加方法如下：</p>
+			<pre>
+				var mydata = {
+				name: "Adam";
+				age: "28";
+				displayAge: function()
+				{
+					document.writeln("Hello" + this.name + ".");
+				}
+				myData.displayAge();	//这样来调用方法
+			</pre>
+			<p>使用for...in语句可枚举对象属性，这个语句会对对象的每个属性执行一次。：</p>
+			<pre>
+				var mydata = {
+				name: "Adam";
+				age: "28"};
+				for(var prop in mydata)
+				{
+					document.writeln("Name:" + prop + " Value:" + mydata[prop];
+				}
+			</pre>
+			<p>要删除对象的属性或方法，使用delete，比如：delete mydata.name;。in表达式用来检查，对象是否包含某个属性：var hasName = "name" in mydata;，这个表达式将返回true。</p>
+			<p>判断对象是否具有某个属性，使用in，格式："属性名" in 对象变量名。运算符==判断两个变量是否相等时，先将变量转换为相同类型再比较。而等同运算符===则不会转换类型。</p>
+			<p>基本数据类型的比较是值的比较，对象的比较则是引用比较。可以这样理解类名不同，即使两个类内容完全一样，也是不相同的两个对象。</p>
+			<p>字符串的+运算符比数字的加运算符优先级更高，而JavaScript在运算之前会进行类型转换，因此，5+'5'的结果是55而不是10。数字字面量要调用number类型的方法需在用括号括起来，将字面量转换为一个number类型的值，比如：(5).toString，也可以使用String函数，比如：String(5)。</p>
+			<p>number类型的toString方法有多种，比如，toFixed(n)可以定义小数位数。toString(2)表示转换为2进制，toString（16）自然是16进制。</p>
+			<p>将字符串转换为数值，可使用Number/parseInt/parseFloat函数。</p>
+			<p>要创建数组，可使用Array()类：var myArray = new Array();或是直接用字面量给数组赋值：var myArray = [100, 'Adam', true];</p>
+			<p>上例中可用myArray.length来获取这上数组的长度，这样就可以用for循环遍历数组了。</p>
+			<p>JavaScript数组对象可用的方法:concat()将数组和此方法参数指定的数组合为一个数组并返回；join()将所有数组元素以此方法指定的分隔符连成一个字符串；sort()对数组排序push(item)把数组当栈使用，将指定数据添加到数组中；unshift(item)类似push，但新元素被插到数组的开头位置。</item></p>
+			<p>null==undefined表达式的值为true；而null===undefined的值为false。</p>
 	    </section>
+	</article>
+	<h1>第二部分 HTML元素</h1>
+	<article>
+		<header>第六章 HTML5元素背景知识</header>
+		<section>
+			<p></p>
+		</section>
 	</article>
     </body>
 </html>
