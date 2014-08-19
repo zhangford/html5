@@ -40,7 +40,7 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
 	<section><image src="./images/cover.jpg" /></section>
 	<h1>第一部分 开篇</h1>
 	<article>
-	    <header>第一章 HTML5背景知识</header>
+	    <header><h2>第一章 HTML5背景知识</h2></header>
 	    <section>
 		<p>HTML5假定使用JavaScript,而且HTML5很多新增特性都要用到JavaScript。HTML5的一大改进是让浏览器直接处理那些原来要使用Flash实现的富内容。</p>
 		<p>HTML5的三项核心技术是HTML5核心规范，CSS和JavaScript。</p>
@@ -56,14 +56,14 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
 	<em>*注：hr标记用来表示主题的改变。它属于虚元素，即里面不放置任何内容，只表示一种特定意思。</em>
 	<hr />
 	<article>
-	    <header>第二章 准备工作</header>
+	    <header><h2>第二章 准备工作</h2></header>
 	    <section>
 		<p>一些章节使用了Node.js可以从<a href="http://nodejs.org">http://nodejs.org</a>下载，有些功能需要使用multipart模块，从<a href="https://github.com/isaacs/multipart-js">此处下载</a>。
 	    </section>
 	</article>
 	<hr />
 	<article>
-	    <header>第三章 初探HTML</header>
+	    <header><h2>第三章 初探HTML</h2></header>
 	    <section>
 		<p>HTML的元素名和属性不区分大小写，但是一般都采用小写。用标记来控制内容呈现形式的做法现在已受到强烈反对，这个工作应当由CSS完成。</p>
 		<p>有些元素具有布尔属性，这类属性不需赋值，只需将属性名添加进去即可，比如：disabled。也可以用以下两种等价方式：disabled="",disabled="disabled"。</p>
@@ -128,7 +128,7 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
 	</article>
 	<hr />
 	<article>
-	    <header>第五章 初探JavaScript</header>
+	    <header><h2>第五章 初探JavaScript</h2></header>
 	    <section>
 			<p>在HTML中定义JavaScript脚本有两种方式，使用内嵌脚或定义外部脚本。JavsScript语言区分大小写，是一种弱数据类型语言，不需要定义数据类型，调用函数时，参数的数目也不必相同，参数少，未提供值的参数值均为undefined。</p>
 			<p>定义变量要使用var关键字，在script元素中定义的称为全局变量，在函数中定义的是局部变量。JavaScript有三种基本变量类型，string,number,boolean。这三种类型可用于任何变量。</p>
@@ -179,10 +179,14 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
 	</article>
 	<h1>第二部分 HTML元素</h1>
 	<article>
-		<header>第六章 HTML5元素背景知识</header>
+		<header><h2>第六章 HTML5元素背景知识</h2></header>
 		<section>
-			<p></p>
+			<p>问问自己打算如何发挥一个元素的语义作用，如果不能马上答出就不用这个元素。不要创造自由的语义，如果找不到适合自己所要含义的元素，就考虑使唤用通用元素（如span和div)，并且用全局属性class表明其含义。</p>
 		</section>
+        <footer><p>尽量使用最具体的元素，不要误用元素，在文档、网站和Web应用系统中元素的使用都要保持一致。</p></footer>
 	</article>
+    <article>
+        <header><h2>第七章 创建HTML文档</h2></header>
+    </article>
     </body>
 </html>
