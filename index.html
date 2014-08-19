@@ -9,8 +9,9 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
     <head>
 	<!-- 元数据、外部资源、外部CSS及CSS、外部脚本及脚本在此处定义 -->
 	<title>HTML5权威指南 [美]Adam Freeman</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="http://localhost/html5/" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- 下面用style元素来定义一个样式表-->
 	<style type="text/css">
 	    a
@@ -187,6 +188,36 @@ DOCTYPE html的意思是这是一个html文档，省去了以前的那些文档�
 	</article>
     <article>
         <header><h2>第七章 创建HTML文档</h2></header>
+        <section>
+            <p>文档元素只有四个：DOCTYPE，html元素，head元素，body元素。</p>
+            <ul>
+                <li>DOCTYPE元素：它独一无二自成一类，每个HTML文档都必须以这个元素开头。浏览器据此得知自己处理的是HTML内容。虽然省略也没关系，但不是个好习惯。它只有一种用法-&lt;DOCTYPE html&gt;，也没有结束标签，不用再和以前一样加入DTD声明了。</li>
+                <li>html元素：更恰当的名称是根元素，它有head元素和body元素各一个。</li>
+                <li>head元素：包含着文档的元数据。元数据向浏览器提供了有关文档内容和标记的信息，此外还可以包含脚本和对外部资源（比如CSS样式表）的引用。必须有一个title元素，其它可有可无。</li>
+                <li>body元素：这里是文档的内容，它总是紧跟head之后，是html的第二个子元素。HTML5中元素与外观相关的属性已经大量减少，改用CSS实现。</li>
+            </ul>
+            <p>
+                用元数据元素说明文档，元数据元素提供了关于HTML文档的信息，它们本身不是文档内容，但提供了关于文档内容的信息。应用如下：
+                <ul>
+                    <li>title:设置文档标题，每个文档有且只有一个title元素。</li>
+					<li>base:用来设置一个基准URL（用它的href属性实现，比如：href='http://www.fordtec.com'），让HTML文档中的相对链接在此基础上进行解析。它还能设定链接在用户点击时的打开方式（通过定义此元素的target属性实现），以及提交表单时浏览器如何反应。一个HTML文档应该至少包含一个base元素。它没有结束标签。</li>
+					<li>meta:用来定义文档的各种元数据以说明文档。有四个属性-name,content,charset和http-equiv。每个meta元素只能用于一种用途，如需多个用途就定义多个meta。
+						<ul>
+							<li>指定名/值元数据对：name用来表示元数据类型，content表示元数据的值。比如：name="Author" content="Ford"。常用的有五个：application name-当前所属Web应用的名称；author；description; generator-生成HTML的软件名，比如PHP等服务器端脚本；keywords-用逗号分开的供搜索用的关键字。它还有三个大多数搜索引擎都认识的值：noindex-不要索引本页；noarchive-不要存档或缓存；nofollow-不要顺着本页的链接继续搜索下去。关于搜索引擎请参考https://www.google.com/webmasters/tools/home?hl=zh-CN</li>
+							<li>声明字符编码：使用charset来定义网页所用的编码，现在50%的网页都使用charset="utf-8"</li>
+							<li>模拟HTTP标头字段：服务器和浏览器之间输数据时一般用的就是HTTP。服务器的每条响应都包含一组向浏览器说明其内容的字段。meta元素可用来模拟或替换其中三种标头字段。标头字段名称用http-equiv属性来定义，内容由content指定，它有三个值可用：
+								<ul>
+									<li>refresh：以秒为单位定义一个时间间隔，在此时间过去之后将从服务器重新载入当前页。也可以另行指定一个URL让浏览器指定。比如：http-equiv="refresh" content="600; http://www.fordcode.com"</li>
+									<li>default-style：指定页面优先使用的样式表。对应的content值应与同一文档中某个style元素或link元素的title属性相同。</li>
+									<li>content-type：这是另一种声明HTML页面所用字符编码的方法，比如：http-equiv="content-type" content="text/html charset=utf-8"。有点罗嗦不想用。</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>定义CSS样式：以style元素定义HTML文档内嵌的CSS样式，link元素用来导入外部样式表。</li>
+                </ul>
+            </p>
+        </section>
     </article>
     </body>
 </html>

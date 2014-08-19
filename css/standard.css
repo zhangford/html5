@@ -1,0 +1,23 @@
+/**
+ * 这是一个标准的CSS样式，定义元素的习惯样式
+ *
+ */
+html
+{
+	display: block;
+}
+html:focus
+{
+	outline: none;
+}
+
+body
+{
+	display: block;
+	margin: 8px;
+}
+
+body:focus
+{
+	outline: none;
+}

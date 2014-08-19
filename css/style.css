@@ -7,7 +7,29 @@ and open the template in the editor.
     Created on : 2014-7-12, 22:40:07
     Author     : 锋
 */
+/**
+ * 这个表中的元素属性都是习惯样式
 @import "article.css";
+*/
+html
+{
+    display: block;
+}
+html:focus
+{
+    outline: none;
+}
+
+body
+{
+    display: block;
+    margin: 8px;
+}
+
+body:focus
+{
+    outline: none;
+}
 
 a
 {
